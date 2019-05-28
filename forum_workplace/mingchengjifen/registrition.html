@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+					html, body{
+						position: relative;
+						height: 100%;
+					}
+			        #container{
+						position: absolute;
+                        width: 100%;
+                        text-align: center;
+						top: 50%;
+						transform: translateY(-80%);
+                }
+		</style>
+	</head>
+	<body>
+	<script src="js/jquery-3.4.1.js"></script>
+	<form method="post" action="fish_sever.php">
+		<div id="container">
+		<p><label>用户名：<input type="text" name="username" placeholder="长度为3～9个字符且不能为名称积分" autofocus="autofocus">
+			<span id="uname-msg"></span> </label></p>
+		<label for="sex">性别：</label>
+		<input type="radio" name="sex" value="female">女
+		<input type="radio" name="sex" value="male">男
+		<input type="radio" name="sex" value="other">其他</p>
+			<p>密码：<input type="password" placeholder="密码长度为6～9位"></p>
+			<p>确认密码：<input type="password" placeholder="再次输入密码"></p>
+		<p>电话：<input type="tel" name="tel" required="required">
+		<p>邮箱：<input type="email" name="email"></p>
+		 <p><label for="class">请选择课程
+		<select name="class">
+			<option value="1">Scratch</option>
+			<option value="2">C++</option>
+		</select></label></p>
+		<p><input type="checkbox" name="rule" required="required" checked="checked">我已经阅读并同意<a href="contract.html">saen协议</a></label></p>
+		<p><button>提交</button></p>
+		</div>
+		</form>
+	<script>
+		$("form>[name='username']").blur(function() {
+			var $txt = $(this);
+			var $span = $txt.next();
+			if($txt.val().length>2 && $txt.val().length<10){
+				//    符合弹出ok
+				$span.html('<img src="image/ok.png">')
+			}
+//    反之err
+			else{
+				$span.html('<img src="image/err.png">用户名长度必须介于3~9位')
+			}
+		})
+	</script>
+	</body>
+</html>
